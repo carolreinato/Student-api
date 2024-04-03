@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<Context>(options =>
+builder.Services.AddDbContext<BaseContext>(options =>
 {
     options.UseNpgsql(builder.Configuration["DefaultConnection"]);
 });
