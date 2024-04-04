@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Student.Domain.Interfaces.Repositories;
+using Student.Domain.Interfaces.Services;
 using Student.Infra.Data.Context;
+using Student.Infra.Data.Repository;
+using Student.Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +14,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<BaseContext>(options =>
+builder.Services.AddDbContext<StudentContext>(options =>
 {
     options.UseNpgsql(builder.Configuration["DefaultConnection"]);
 });
+
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 
 var app = builder.Build();
 

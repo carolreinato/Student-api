@@ -9,7 +9,7 @@ namespace Student.Domain.Entities
     public class Student : BaseEntity
     {
         public Guid Hash { get; set; }
-        public required string Name { get; set; }
-        public required string Email { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
     }
 }
