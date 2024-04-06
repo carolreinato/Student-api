@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Student.Domain.DTOs;
 using Student.Domain.Interfaces.Services;
 
 namespace Student_api.Controllers
@@ -14,9 +15,9 @@ namespace Student_api.Controllers
              _studentService = studentService;
         }
         [HttpGet("/aluno")]
-        public async Task<ActionResult<Student.Domain.Entities.Student>> GetStudent(Guid hash)
+        public async Task<ActionResult<StudentResponse>> GetStudent([FromQuery] StudentRequest request)
         {
-            var student = await _studentService.GetAsync(hash);
+            var student = await _studentService.GetAsync(request);
             return student;
         }
     }

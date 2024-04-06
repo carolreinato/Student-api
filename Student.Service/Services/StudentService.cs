@@ -1,24 +1,37 @@
-﻿using Student.Domain.Interfaces.Repositories;
+﻿using AutoMapper;
+using FluentValidation;
+using FluentValidation.Results;
+using Student.Domain.DTOs;
+using Student.Domain.Interfaces.Repositories;
 using Student.Domain.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Student.Domain.Interfaces.Validators;
 
 namespace Student.Service.Services
 {
     public class StudentService : IStudentService
     {
-        private IStudentRepository _studentRepository;
-        public StudentService(IStudentRepository studentRepository)
+        private readonly IStudentRepository _studentRepository;
+        private readonly IStudentValidator _studentValidator;
+        private readonly IMapper _mapper;
+        public StudentService(IStudentRepository studentRepository,
+            IStudentValidator studentValidator,
+            IMapper mapper)
         {
-              _studentRepository = studentRepository;
+            _studentRepository = studentRepository;
+            _studentValidator = studentValidator;
+            _mapper = mapper;
         }
 
-        public async Task<Domain.Entities.Student> GetAsync(Guid hash)
+        public async Task<StudentResponse> GetAsync(StudentRequest request)
         {
-            return await _studentRepository.GetStudentByHash(hash);
+            ValidationResult validationResult = _studentValidator.Validate(request);
+
+            if (!validationResult.IsValid)
+                throw new ValidationException(validationResult.Errors);
+
+            var student = await _studentRepository.GetStudentByHash(request.Hash);
+
+            return _mapper.Map<StudentResponse>(student);
         }
     }
 }
