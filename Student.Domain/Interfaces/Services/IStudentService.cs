@@ -10,5 +10,6 @@ namespace Student.Domain.Interfaces.Services
     public interface IStudentService
     {
         Task<StudentResponse> GetAsync(StudentRequest request);
+        Task<int> InsertAsync(AddStudentRequest request);
     }
 }

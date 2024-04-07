@@ -9,6 +9,9 @@ namespace Student.Service.AutoMapper
         {
             CreateMap<StudentResponse, Domain.Entities.Student>()
                 .ReverseMap();
+
+            CreateMap<AddStudentRequest, Domain.Entities.Student>()
+                .ReverseMap();
         }
     }
 }

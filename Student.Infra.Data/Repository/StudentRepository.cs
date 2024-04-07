@@ -15,5 +15,11 @@ namespace Student.Infra.Data.Repository
             return await Get<Domain.Entities.Student>(x => x.Hash == hash)
                 .FirstOrDefaultAsync();
         }
+
+        public async Task<int> InsertStudent(Domain.Entities.Student student)
+        {
+            await InsertAsync<Domain.Entities.Student>(student);
+            return await SaveChangesAsync();
+        }
     }
 }

@@ -25,6 +25,7 @@ builder.Services.AddDbContext<StudentContext>(options =>
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IStudentValidator, StudentValidator>();
+builder.Services.AddScoped<IAddStudentValidator, AddStudentValidator>();
 builder.Services.AddAutoMapper(typeof(StudentAutoMapper));
 
 var app = builder.Build();
