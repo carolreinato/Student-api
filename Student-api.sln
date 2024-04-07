@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student-api.Application", "Student-api\Student-api.Application.csproj", "{994A4F51-6893-43C3-9DB6-0AD6A2A57D8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.Application", "Student-api\Student.Application.csproj", "{994A4F51-6893-43C3-9DB6-0AD6A2A57D8E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{9F7B7699-F5A1-4793-9913-468FF229A227}"
 EndProject
