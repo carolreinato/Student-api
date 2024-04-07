@@ -1,5 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Student.Domain.Interfaces.Repositories;
+using Student.Domain.Interfaces.Services;
+using Student.Domain.Interfaces.Validators;
 using Student.Infra.Data.Context;
+using Student.Infra.Data.Repository;
+using Student.Service.AutoMapper;
+using Student.Service.Services;
+using Student.Service.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +17,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<BaseContext>(options =>
+builder.Services.AddDbContext<StudentContext>(options =>
 {
     options.UseNpgsql(builder.Configuration["DefaultConnection"]);
 });
+
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IStudentValidator, StudentValidator>();
+builder.Services.AddAutoMapper(typeof(StudentAutoMapper));
 
 var app = builder.Build();
 

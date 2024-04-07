@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Student.Domain.Entities
+namespace Student.Domain.DTOs
 {
-    public class Student : BaseEntity
+    public class StudentResponse
     {
+        public int Id { get; set; }
         public Guid Hash { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
