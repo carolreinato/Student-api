@@ -14,11 +14,18 @@ namespace Student_api.Controllers
         {
              _studentService = studentService;
         }
-        [HttpGet("/aluno")]
+
+        [HttpGet("/getStudent")]
         public async Task<ActionResult<StudentResponse>> GetStudent([FromQuery] StudentRequest request)
         {
             var student = await _studentService.GetAsync(request);
             return student;
+        }
+
+        [HttpPost("/addStudent")]
+        public async Task<ActionResult<int>> AddStudent([FromBody] AddStudentRequest request)
+        {
+            return await _studentService.InsertAsync(request);
         }
     }
 }

@@ -12,13 +12,16 @@ namespace Student.Service.Services
     {
         private readonly IStudentRepository _studentRepository;
         private readonly IStudentValidator _studentValidator;
+        private readonly IAddStudentValidator _addStudentValidator;
         private readonly IMapper _mapper;
         public StudentService(IStudentRepository studentRepository,
             IStudentValidator studentValidator,
+            IAddStudentValidator addStudentValidator,
             IMapper mapper)
         {
             _studentRepository = studentRepository;
             _studentValidator = studentValidator;
+            _addStudentValidator = addStudentValidator;
             _mapper = mapper;
         }
 
@@ -32,6 +35,24 @@ namespace Student.Service.Services
             var student = await _studentRepository.GetStudentByHash(request.Hash);
 
             return _mapper.Map<StudentResponse>(student);
+        }
+
+        public async Task<int> InsertAsync(AddStudentRequest request)
+        {
+            ValidationResult validationResult = _addStudentValidator.Validate(request);
+
+            if(!validationResult.IsValid)
+                throw new ValidationException(validationResult.Errors);
+
+            var newStudent = _mapper.Map<Domain.Entities.Student>(request);
+            newStudent.Hash = Guid.NewGuid();
+
+            var id = await _studentRepository.InsertStudent(newStudent);
+
+            if (id == 0)
+                throw new ValidationException("Can't insert student");
+
+            return id;
         }
     }
 }
