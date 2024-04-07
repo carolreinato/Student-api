@@ -7,7 +7,7 @@ namespace Student_api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentController : ControllerBase
+    public class StudentController : ApiController
     {
         private readonly IStudentService _studentService;
         public StudentController(IStudentService studentService)
@@ -16,16 +16,15 @@ namespace Student_api.Controllers
         }
 
         [HttpGet("/getStudent")]
-        public async Task<ActionResult<StudentResponse>> GetStudent([FromQuery] StudentRequest request)
+        public async Task<IActionResult> GetStudent([FromQuery] StudentRequest request)
         {
-            var student = await _studentService.GetAsync(request);
-            return student;
+            return !ModelState.IsValid ? CustomResponse(ModelState) : CustomResponse(await _studentService.GetAsync(request));
         }
 
         [HttpPost("/addStudent")]
-        public async Task<ActionResult<int>> AddStudent([FromBody] AddStudentRequest request)
+        public async Task<IActionResult> AddStudent([FromBody] AddStudentRequest request)
         {
-            return await _studentService.InsertAsync(request);
+            return !ModelState.IsValid ? CustomResponse(ModelState) : CustomResponse(await _studentService.InsertAsync(request));
         }
     }
 }
