@@ -37,12 +37,12 @@ namespace Student.Service.Services
             return _mapper.Map<StudentResponse>(student);
         }
 
-        public async Task<int> InsertAsync(AddStudentRequest request)
+        public async Task<ValidationResult> InsertAsync(AddStudentRequest request)
         {
             ValidationResult validationResult = _addStudentValidator.Validate(request);
 
-            if(!validationResult.IsValid)
-                throw new ValidationException(validationResult.Errors);
+            if (!validationResult.IsValid)
+                return validationResult;
 
             var newStudent = _mapper.Map<Domain.Entities.Student>(request);
             newStudent.Hash = Guid.NewGuid();
@@ -52,7 +52,7 @@ namespace Student.Service.Services
             if (id == 0)
                 throw new ValidationException("Can't insert student");
 
-            return id;
+            return validationResult;
         }
     }
 }

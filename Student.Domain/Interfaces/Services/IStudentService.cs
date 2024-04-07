@@ -1,4 +1,5 @@
-﻿using Student.Domain.DTOs;
+﻿using FluentValidation.Results;
+using Student.Domain.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace Student.Domain.Interfaces.Services
     public interface IStudentService
     {
         Task<StudentResponse> GetAsync(StudentRequest request);
-        Task<int> InsertAsync(AddStudentRequest request);
+        Task<ValidationResult> InsertAsync(AddStudentRequest request);
     }
 }
