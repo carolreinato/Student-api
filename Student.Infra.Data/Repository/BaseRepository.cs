@@ -32,9 +32,9 @@ namespace Student.Infra.Data.Repository
             DbContext.Add(obj);
         }
 
-        protected async Task InsertAsync<T>(T obj) where T : class, new()
+        protected async Task InsertAsync<T>(T obj, CancellationToken cancellationToken) where T : class, new()
         {
-            await DbContext.AddAsync(obj);
+            await DbContext.AddAsync(obj, cancellationToken);
 
         }
 

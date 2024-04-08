@@ -8,7 +8,7 @@ namespace Student.Domain.Interfaces.Repositories
 {
     public interface IStudentRepository
     {
-        Task<Domain.Entities.Student> GetStudentByHash(Guid hash);
-        Task<int> InsertStudent(Domain.Entities.Student student);
+        Task<Domain.Entities.Student> GetStudentByHash(CancellationToken cancellationToken, Guid hash);
+        Task<int> InsertStudent(CancellationToken cancellationToken, Domain.Entities.Student student);
     }
 }

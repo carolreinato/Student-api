@@ -10,7 +10,7 @@ namespace Student.Domain.Interfaces.Services
 {
     public interface IStudentService
     {
-        Task<StudentResponse> GetAsync(StudentRequest request);
-        Task<ValidationResult> InsertAsync(AddStudentRequest request);
+        Task<StudentResponse> GetAsync(CancellationToken cancellationToken, StudentRequest request);
+        Task<ValidationResult> InsertAsync(CancellationToken cancellationToken, AddStudentRequest request);
     }
 }

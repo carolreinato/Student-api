@@ -1,10 +1,12 @@
 ﻿using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Student_api.Controllers
 {
     [ApiController]
+    [ExcludeFromCodeCoverage]
     public class ApiController : ControllerBase
     {
         private readonly ICollection<string> _errors = new List<string>();
