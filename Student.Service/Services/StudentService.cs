@@ -25,19 +25,19 @@ namespace Student.Service.Services
             _mapper = mapper;
         }
 
-        public async Task<StudentResponse> GetAsync(StudentRequest request)
+        public async Task<StudentResponse> GetAsync(CancellationToken cancellationToken, StudentRequest request)
         {
             ValidationResult validationResult = _studentValidator.Validate(request);
 
             if (!validationResult.IsValid)
                 throw new ValidationException(validationResult.Errors);
 
-            var student = await _studentRepository.GetStudentByHash(request.Hash);
+            var student = await _studentRepository.GetStudentByHash(cancellationToken, request.Hash);
 
             return _mapper.Map<StudentResponse>(student);
         }
 
-        public async Task<ValidationResult> InsertAsync(AddStudentRequest request)
+        public async Task<ValidationResult> InsertAsync(CancellationToken cancellationToken, AddStudentRequest request)
         {
             ValidationResult validationResult = _addStudentValidator.Validate(request);
 
@@ -47,7 +47,7 @@ namespace Student.Service.Services
             var newStudent = _mapper.Map<Domain.Entities.Student>(request);
             newStudent.Hash = Guid.NewGuid();
 
-            var id = await _studentRepository.InsertStudent(newStudent);
+            var id = await _studentRepository.InsertStudent(cancellationToken, newStudent);
 
             if (id == 0)
                 throw new ValidationException("Can't insert student");

@@ -1,13 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Student.Infra.Data.Mapping
 {
+    [ExcludeFromCodeCoverage]
     public class StudentMap : IEntityTypeConfiguration<Domain.Entities.Student>
     {
         public void Configure(EntityTypeBuilder<Domain.Entities.Student> builder)
