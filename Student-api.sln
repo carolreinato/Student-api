@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.Application", "Student-api\Student.Application.csproj", "{994A4F51-6893-43C3-9DB6-0AD6A2A57D8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Student.Application", "Student-api\Student.Application.csproj", "{994A4F51-6893-43C3-9DB6-0AD6A2A57D8E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{9F7B7699-F5A1-4793-9913-468FF229A227}"
 EndProject
@@ -13,17 +13,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Service", "3 - Service"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{AFCBD32C-0952-4007-BCA7-EF5294059668}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.Domain", "Student.Domain\Student.Domain.csproj", "{89DD81E1-C3F5-4A92-A4EB-F79F5BDBD21F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Student.Domain", "Student.Domain\Student.Domain.csproj", "{89DD81E1-C3F5-4A92-A4EB-F79F5BDBD21F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.Service", "Student.Service\Student.Service.csproj", "{58378114-25AE-4D63-A66D-1D17A558E6D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Student.Service", "Student.Service\Student.Service.csproj", "{58378114-25AE-4D63-A66D-1D17A558E6D0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{3FBD6FD0-DC91-4D23-8586-643EA2652115}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{62971A63-7D3E-4F04-8784-6BA72F93623B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.Infra.Data", "Student.Infra.Data\Student.Infra.Data.csproj", "{3195CC85-1DB3-4347-9F52-7074B6FFFC30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Student.Infra.Data", "Student.Infra.Data\Student.Infra.Data.csproj", "{3195CC85-1DB3-4347-9F52-7074B6FFFC30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.Infra.CrossCutting", "Student.Infra.CrossCutting\Student.Infra.CrossCutting.csproj", "{6786A76F-0839-4B03-8EF4-67B344795B35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Student.Infra.CrossCutting", "Student.Infra.CrossCutting\Student.Infra.CrossCutting.csproj", "{6786A76F-0839-4B03-8EF4-67B344795B35}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Test", "5 - Test", "{63B16E97-A555-4E86-90C3-4A416F250856}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - UnitTest", "5.1 - UnitTest", "{DA5F6B5B-1895-4C63-B06A-92CF905CFABB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.Test.UnitTest", "Student.Test.UnitTest\Student.Test.UnitTest.csproj", "{224599BE-9D00-45BE-83D0-2D84E508F49D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +57,10 @@ Global
 		{6786A76F-0839-4B03-8EF4-67B344795B35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6786A76F-0839-4B03-8EF4-67B344795B35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6786A76F-0839-4B03-8EF4-67B344795B35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{224599BE-9D00-45BE-83D0-2D84E508F49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{224599BE-9D00-45BE-83D0-2D84E508F49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{224599BE-9D00-45BE-83D0-2D84E508F49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{224599BE-9D00-45BE-83D0-2D84E508F49D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +73,8 @@ Global
 		{62971A63-7D3E-4F04-8784-6BA72F93623B} = {AFCBD32C-0952-4007-BCA7-EF5294059668}
 		{3195CC85-1DB3-4347-9F52-7074B6FFFC30} = {3FBD6FD0-DC91-4D23-8586-643EA2652115}
 		{6786A76F-0839-4B03-8EF4-67B344795B35} = {62971A63-7D3E-4F04-8784-6BA72F93623B}
+		{DA5F6B5B-1895-4C63-B06A-92CF905CFABB} = {63B16E97-A555-4E86-90C3-4A416F250856}
+		{224599BE-9D00-45BE-83D0-2D84E508F49D} = {DA5F6B5B-1895-4C63-B06A-92CF905CFABB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7FCBDE5A-2190-4D88-AD64-670DDBC79DE7}
