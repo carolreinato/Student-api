@@ -2,11 +2,6 @@
 using Moq.AutoMock;
 using Student.Domain.DTOs;
 using Student.Service.Validators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Student.Test.UnitTest.Validators
@@ -23,7 +18,7 @@ namespace Student.Test.UnitTest.Validators
         }
 
         [Fact]
-        public void StudentValidator_ShouldValidRequestWithoutErrors()
+        public void StudentValidator_ShouldValidateRequestWithoutErrors()
         {
             var request = CreateAddStudentRequest("somedumbname", "somedumbemail@dumbemail.com");
 
@@ -34,7 +29,7 @@ namespace Student.Test.UnitTest.Validators
         }
 
         [Fact]
-        public void StudentValidator_ShouldValidRequestWithErrors()
+        public void StudentValidator_ShouldValidateRequestWithErrors()
         {
             var request = CreateAddStudentRequest(string.Empty, "somedumbemail");
 

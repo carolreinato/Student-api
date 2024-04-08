@@ -10,15 +10,15 @@ namespace Student.Infra.Data.Repository
         {
         }
 
-        public async Task<Domain.Entities.Student> GetStudentByHash(Guid hash)
+        public async Task<Domain.Entities.Student> GetStudentByHash(CancellationToken cancellationToken, Guid hash)
         {
             return await Get<Domain.Entities.Student>(x => x.Hash == hash)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(cancellationToken);
         }
 
-        public async Task<int> InsertStudent(Domain.Entities.Student student)
+        public async Task<int> InsertStudent(CancellationToken cancellationToken, Domain.Entities.Student student)
         {
-            await InsertAsync<Domain.Entities.Student>(student);
+            await InsertAsync<Domain.Entities.Student>(student, cancellationToken);
             return await SaveChangesAsync();
         }
     }
